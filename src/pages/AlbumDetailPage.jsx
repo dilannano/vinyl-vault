@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-// Routed page "/album/:albumId" — detailed inspection view for one record.
 const AlbumDetailPage = ({ albums, onAddToCart }) => {
-  // Read the dynamic URL parameter.
   const { albumId } = useParams();
 
-  // Local state: quantity selector before adding to the cart.
   const [qty, setQty] = useState(1);
 
-  // Find the album that matches the URL param.
   const album = albums.find((a) => a.id === albumId);
 
-  // Sanity check: unknown id -> friendly fallback with a link home.
   if (!album) {
     return (
       <div className="detail-error">
